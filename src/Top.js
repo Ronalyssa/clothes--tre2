@@ -10,7 +10,8 @@ class Top extends Component {
 
         return(
             <div>
-            Tops
+                
+            {this.props.clothing}
             </div>
         )
     }

@@ -1,47 +1,84 @@
 import React, { Component } from 'react';
+import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
+import WelcomePage from './WelcomePage';
+import {
+    Switch,
+    Route,
+    Link
+  } from "react-router-dom";
 
 
 class Login extends Component {
     
     state = {
-        userEntry: '',
-        passwordEntry: ''
+        username: '',
+        password: ''
     }
 
 
     handleUser = (e) => {
-
-        let user = this.props.user
-        
         this.setState({
-        //    userEntry: e.target.value
-           userEntry: user
+           username: e.target.value
         })
     }
 
     handlePassword = (e) => {
-        let password = this.props.password
         this.setState({
-        //    passwordEntry: e.target.value
-           passwordEntry: password
+           password: e.target.value
         })
     }
 
     handleSubmit = (e) => {
         e.preventDefault()
-        console.log("I'm signed In")
+        this.props.login(this.state)
+
     }
     
     render() {
         // console.log(this.state)
         return(
             <div>
-                <h4>Login</h4>
+                {/* <h4>Login</h4>
                 <form onSubmit={this.handleSubmit}>
                     <input name={'username'} value={this.state.userEntry} onChange={this.handleUser}/>
-                    <input password={'password'} value={this.state.passwordEntry} onChange={this.handlePassword} />
+                    <input name={'password'} value={this.state.passwordEntry} onChange={this.handlePassword} />
                     <input type='submit' value='login' />
-                </form>
+                </form> */}
+
+                    <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
+                        <Grid.Column style={{ maxWidth: 450 }}>
+                        <Header as='h2' color='teal' textAlign='center'>
+                            <Image src='/logo.png' /> Log-in to your account
+                        </Header>
+                        <Form size='large' onSubmit={this.handleSubmit}>
+                            <Segment stacked>
+                            <Form.Input fluid icon='username' iconPosition='left' placeholder='UserName'  onChange={this.handleUser}/>
+                            <Form.Input
+                                fluid
+                                icon='lock'
+                                iconPosition='left'
+                                placeholder='Password'
+                                type='password'
+                                onChange={this.handlePassword}
+                            />
+
+                            <Button color='teal' fluid size='large'>
+                                Login
+                            </Button>
+                            </Segment>
+                        </Form>
+                        <Message>
+                            New to us? <a href='#'>Sign Up</a>
+                        </Message>
+                        </Grid.Column>
+                    </Grid>
+
+                    
+                    <Link to='/WelcomePage'>
+                        <WelcomePage/>
+                    </Link>
+
+
             </div>
         )
     }

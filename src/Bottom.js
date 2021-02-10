@@ -10,7 +10,7 @@ class Bottom extends Component {
 
         return(
             <div>
-            Bottoms
+            {this.props.clothing}
             </div>
         )
     }

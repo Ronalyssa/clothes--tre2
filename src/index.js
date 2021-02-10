@@ -1,8 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import 'semantic-ui-css/semantic.min.css'
 import App from './App';
 import rootReducer from './index'
+import { BrowserRouter } from 'react-router-dom'
 // import { createStore } from 'redux'
 
 
@@ -13,7 +15,9 @@ import rootReducer from './index'
 // )
 
 ReactDOM.render(
-    <App />,
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>,
   document.getElementById('root')
 );
 
