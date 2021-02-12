@@ -1,20 +1,20 @@
 import React, { Component } from 'react';
 import Top from './Top'
 import Bottom from './Bottom'
-
+import Outfit from './WardrobeOutfits'
 
 class Closet extends Component {
     
  
     showTops = () => {
         return this.props.tops.map(top => {
-            return  <Top key={top.id} {...top}/>
+            return  <Top key={top.id} top={top}/>
         })
     }
 
     showBottoms = () => {
         return this.props.bottoms.map(bottom => {
-            return  <Bottom key={bottom.id} {...bottom}/>
+            return  <Bottom key={bottom.id} bottom={bottom}/>
         })
     }
  
@@ -24,10 +24,12 @@ class Closet extends Component {
 
         return(
             <div>
-            Closet 
-            {this.showTops()}
-            {this.showBottoms()}
-           
+                Closet 
+                <button> Show All Clothing</button>
+                    {this.showTops()}
+                    {this.showBottoms()}
+                    
+             
             </div>
         )
     }
