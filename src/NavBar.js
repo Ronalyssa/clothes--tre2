@@ -31,7 +31,7 @@ class NavBar extends Component {
             <Menu.Menu position='right'>
     
               <Menu.Item>
-                <Link to='/Login'>
+                <Link to='/Login'> 
                 <Button primary>Log In</Button>
                 </Link>
               </Menu.Item>

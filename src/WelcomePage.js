@@ -11,14 +11,13 @@ class WelcomePage extends Component {
 
         return(
             <div>
-            Welcome {this.props.user}<br/>
-            <button>View All Wardrobes</button>
-            <button>Create New Wardrobe</button>
-            <button>View All Outfits</button>
-            <button>Work Wardrobe</button>
-            <button>Go To MarketPlace</button>
+           
             
-
+            WELCOME TO CLOTHES-ÊTRE
+             <div>
+                 About section
+             </div>
+            <button>Log In</button>
 
             </div>
         )

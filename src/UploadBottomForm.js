@@ -15,7 +15,7 @@ class UploadBottomForm extends Component {
 
   handleImage = (e) => {
     this.setState({
-      image: e.target.value
+        image: e.target.files[0]
     })
   }
 
@@ -34,9 +34,9 @@ class UploadBottomForm extends Component {
       <div >
         <form onSubmit={this.handleSubmit}>
           <h3>Upload a Bottom</h3>
-          <input type="text" name="Bottom" value={this.state.name} onChange={this.handleName} />
+          <input type="text" name="Bottom" onChange={this.handleName} />
           <br/>
-          <input type="text" name="image" value={this.state.image} onChange={this.handleImage}/>
+          <input type="file" name="image" onChange={this.handleImage}/>
           <br/>
           <input type="submit" name="submit"  />
         </form>

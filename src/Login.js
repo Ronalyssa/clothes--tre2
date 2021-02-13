@@ -11,8 +11,8 @@ import {
 class Login extends Component {
     
     state = {
-        username: '',
-        password: ''
+        username: 'ronalyssa',
+        password: 'hello'
     }
 
 
@@ -52,7 +52,7 @@ class Login extends Component {
                         </Header>
                         <Form size='large' onSubmit={this.handleSubmit}>
                             <Segment stacked>
-                            <Form.Input fluid icon='username' iconPosition='left' placeholder='UserName'  onChange={this.handleUser}/>
+                            <Form.Input fluid icon='username' iconPosition='left' placeholder='UserName'  onChange={this.handleUser} />
                             <Form.Input
                                 fluid
                                 icon='lock'
@@ -60,6 +60,7 @@ class Login extends Component {
                                 placeholder='Password'
                                 type='password'
                                 onChange={this.handlePassword}
+                                
                             />
 
                             <Button color='teal' fluid size='large'>

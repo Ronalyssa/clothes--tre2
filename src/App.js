@@ -13,6 +13,8 @@ import NavBar from './NavBar'
 import HomePage from './HomePage'
 import Wardrobe from './Wardrobe'
 import Closet from './Closet'
+import UploadBottomForm from './UploadBottomForm'
+import UploadTopForm from './UploadTopForm'
 
 
 
@@ -64,6 +66,44 @@ class App extends Component {
     })
   } 
 
+   //Post fetch request
+   postTop = (topData) => {
+     
+    fetch("http://localhost:3000/tops", { 
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({
+            name: topData.name,
+            image: topData.image,
+            
+        })
+    })
+    .then(resp => resp.json())
+    .then(newTop => {this.setState({  //should the state be the whole top? Also, would help so I can have a bottom as well
+        name: topData.name,
+        image: topData.image
+        })
+    })
+}
+
+postBottom = (bottomData) => {
+    fetch("http://localhost:3000/bottoms", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({
+            name: bottomData.name,
+            image: bottomData.image,
+            
+        })
+    })
+  .then(resp => resp.json())
+  .then(newBottom => {this.setState({  //should the state be the whole bottom? ...doesn't match with the state
+          name: bottomData.name,
+          image: bottomData.image
+          })
+      })
+}
+
 
 
 
@@ -83,8 +123,10 @@ class App extends Component {
             {this.state.user ? <div><Wardrobe wardrobes={this.state.user.wardrobes} outfits={this.state.user.outfits} tops={this.state.user.tops} bottoms={this.state.user.bottoms}/> 
             <Closet tops={this.state.user.tops} bottoms={this.state.user.bottoms}  deleteTop={this.deleteTop} deleteBottom={this.deleteBottom}/></div> : <Login login={this.handleLogin}/>} 
             
-           
-    
+            <UploadTopForm postTop={this.postTop}/>
+            <UploadBottomForm postBottom={this.postBottom}/>
+
+    {/* this.props.history.push("/feed") */}
           </header>
         </div>
     );

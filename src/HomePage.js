@@ -10,10 +10,10 @@ class HomePage extends Component {
 
         return(
             <div>
-            CLOTHES-ÊTRE
-             <div>
-                 About section
-             </div>
+                 Hello {this.props.user}<br/>
+                <button>View All Wardrobes</button>
+                <button>Create New Wardrobe</button>
+                <button>View All Outfits In Closet</button>
             </div>
         )
     }
