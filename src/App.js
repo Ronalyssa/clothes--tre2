@@ -26,23 +26,28 @@ class App extends Component {
   }
 
   // deleteTop = (id) => {
-  //   let updatedTop = this.state.user.tops.filter(top => top.id !== id)
+    // tops = this.state.user.tops
+  //   let updatedTops = this.tops.filter(top => top.id !== id)
   //   this.setState({
   //     //how to access a specific value as a key
+  
   //   })
   // }
 
 
 
   // deleteBottom = (id) => {
-  //   let updatedBottom = this.state.user.bottoms.filter(bottom => bottom.id !== id)
+    // bottoms = this.state.user.bottoms
+  //   let updatedBottoms = this.state.user.bottoms.filter(bottom => bottom.id !== id)
   //   this.setState({
   //     //how to access a specific value as a key
   //   })
   // }
 
   // deleteOutfit = (id) => {
-  //   let updatedOutfit = this.state.user.outfits.filter(bottom => bottom.id !== id)
+
+  // outfits = this.state.user.outfits
+  //   let updatedOutfits = this.state.outfits.filter(bottom => bottom.id !== id)
   //   this.setState({
   //     //how to access a specific value as a key
   //   })
@@ -61,29 +66,25 @@ class App extends Component {
     .then(user => {
       
       this.setState({
-        user
+        user,
+        tops: user.tops,
+        bottoms: user.bottoms
       })
     })
   } 
 
    //Post fetch request
    postTop = (topData) => {
-     
+
+  //  let top={top: topData} 
+  console.log(topData)
     fetch("http://localhost:3000/tops", { 
         method: "POST",
-        headers: {"Content-Type": "application/json"},
-        body: JSON.stringify({
-            name: topData.name,
-            image: topData.image,
-            
-        })
+        // headers: {"Content-Type": "application/json"},
+        body: {topData}
     })
     .then(resp => resp.json())
-    .then(newTop => {this.setState({  //should the state be the whole top? Also, would help so I can have a bottom as well
-        name: topData.name,
-        image: topData.image
-        })
-    })
+    .then(newTop => console.log(newTop))
 }
 
 postBottom = (bottomData) => {
@@ -116,8 +117,10 @@ postBottom = (bottomData) => {
           <header className="App-header">
 
             {/* <Switch>
-              <Route component={HomePage} path={'/'}/>
+              <Route component={props => <WelcomePage {...props}/>} path={'/WelcomePage'}/>
               <Route component={Login} path={'/Login'}/>
+              <Route component={HomePage} path={'/'}/>
+              
             </Switch> */}
             
             {this.state.user ? <div><Wardrobe wardrobes={this.state.user.wardrobes} outfits={this.state.user.outfits} tops={this.state.user.tops} bottoms={this.state.user.bottoms}/> 

@@ -2,7 +2,18 @@ import React, { Component } from 'react';
 
 
 class HomePage extends Component {
-    
+
+    handleWardrobes = () => {
+        // redirect to
+    }
+
+    handleNewWardrobe = () => {
+     // redirect to create wardrobeOutfit page
+    }
+
+    handleCloset = () => {
+        // redirect to closet page
+    }
  
 
  
@@ -11,9 +22,9 @@ class HomePage extends Component {
         return(
             <div>
                  Hello {this.props.user}<br/>
-                <button>View All Wardrobes</button>
-                <button>Create New Wardrobe</button>
-                <button>View All Outfits In Closet</button>
+                <button onClick={this.handleWardrobes}>View All Wardrobes</button>
+                <button onClick={this.handleNewWardrobe}>Create New Wardrobe</button>
+                <button onClick={this.handleCloset}>View All Outfits In Closet</button>
             </div>
         )
     }

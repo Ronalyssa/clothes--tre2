@@ -50,7 +50,7 @@ class Wardrobe extends Component {
         return(
             
             <div>
-            Wardrobes
+            Your Wardrobes
             {this.showWardrobe(this.selectedOutfit)} 
 
             <WardrobeOutfits selectedOutfits={this.state.outfits} tops={this.props.tops} bottoms={this.props.bottoms} />

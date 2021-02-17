@@ -18,13 +18,21 @@ class UploadTopForm extends Component {
         this.setState({
           image: e.target.files[0]
         })
+      
       }
     
       handleSubmit = (e) => {
         e.preventDefault()
-        this.props.postTop(this.state)
-        this.state.name = ''
-        this.state.image = ''
+        const formData = new FormData();
+        formData.append('name', this.state.name);
+        formData.append('image', this.state.image);
+        formData.append('user_id', 3);
+        this.props.postTop(formData)
+        for (var pair of formData.entries()) {
+            console.log(pair[0]+ ', ' + pair[1]); 
+        }
+       
+    //    console.log(formData)
       }
     
     

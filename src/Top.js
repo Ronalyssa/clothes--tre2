@@ -18,7 +18,7 @@ class Top extends Component {
     //     fetch(`http://localhost:3000/tops/${id}`, {method: 'DELETE'})
     //     .then(resp => resp.json())
     //     .then(top => 
-    //             this.props.deleteTop(this.props.user.top.id)
+    //             this.props.deleteTop(this.props.top.id)
     //         )
     //     }
 
