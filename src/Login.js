@@ -31,6 +31,7 @@ class Login extends Component {
     handleSubmit = (e) => {
         e.preventDefault()
         this.props.login(this.state)
+        // this.props.history.push("/welcomePage")
 
     }
     
@@ -48,7 +49,7 @@ class Login extends Component {
                     <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
                         <Grid.Column style={{ maxWidth: 450 }}>
                         <Header as='h2' color='teal' textAlign='center'>
-                            <Image src='/logo.png' /> Log-in to your account
+                             Log-in to your account
                         </Header>
                         <Form size='large' onSubmit={this.handleSubmit}>
                             <Segment stacked>

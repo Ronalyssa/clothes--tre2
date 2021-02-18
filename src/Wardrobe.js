@@ -4,10 +4,12 @@ import CreateOutfitForm from './CreateOutfitForm'
 
 
 
+
 class Wardrobe extends Component {
 
     state = {
-        outfits: []
+        outfits: [],
+        wardrobe_id: null
     }
     
 
@@ -26,7 +28,9 @@ class Wardrobe extends Component {
             let outfitIdArr =wo.map(wo => wo.outfit_id)
             let outfits = this.props.outfits.filter(outfit => outfitIdArr.includes(outfit.id))
             this.setState({
-                outfits
+                outfits,
+                wardrobe_id: currentWardrobeId
+
             })
         })
         
@@ -41,19 +45,34 @@ class Wardrobe extends Component {
     }
 
 
-    
+    deleteSelectedOutfit = (id) => {
+        let outfits = this.state.outfits.filter(outfit => outfit.id !== id)
+        this.setState({
+          outfits
+        })
+
+    }
 
 
  
     render() {
-         
+        // console.log(this.state.outfits)
         return(
+            
             
             <div>
             Wardrobes
             {this.showWardrobe(this.selectedOutfit)} 
 
-            <WardrobeOutfits selectedOutfits={this.state.outfits} tops={this.props.tops} bottoms={this.props.bottoms} />
+            {/* {this.showAllOutfits()} */}
+            <WardrobeOutfits 
+                selectedOutfits={this.state.outfits} 
+                tops={this.props.tops} 
+                bottoms={this.props.bottoms} 
+                allOutfits={this.props.outfits} 
+                deleteOutfit={this.props.deleteOutfit} 
+                wardrobeId={this.state.wardrobe_id} 
+                deleteSelectedOutfit={this.deleteSelectedOutfit}/>
             <CreateOutfitForm/>
 
             </div>
@@ -62,3 +81,18 @@ class Wardrobe extends Component {
 }
 
 export default Wardrobe;
+
+// this.state.outfits
+
+// [{…}]
+// 0:
+// bottom_id: 13
+// created_at: "2021-02-17T06:45:56.807Z"
+// id: 13
+// name: "Business Casual"
+// top_id: 13
+// updated_at: "2021-02-17T06:45:56.807Z"
+// user_id: 7
+// __proto__: Object
+// length: 1
+// __proto__: Array(0)

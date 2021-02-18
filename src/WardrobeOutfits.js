@@ -4,30 +4,47 @@ import Bottom from './Bottom'
 import Outfit from './Outfit'
 
 
+
 class WardrobeOutfits extends Component {
     
     state = {
 
-        outfits: []
+        outfits: [],
+        showAll: false
 
     }
 
 
-    renderOutfits = () => {
+    renderSelectedOutfit = () => {
        
+        if (this.state.showAll) {
+            return this.props.allOutfits.map(outfitObj => {
+                let top = this.props.tops.find(top => top.id === outfitObj.top_id)
+                let bottom = this.props.bottoms.find(bottom => bottom.id === outfitObj.bottom_id)
+                return < Outfit key={outfitObj.id} outfit={outfitObj} top={top} bottom={bottom} deleteOutfit={this.props.deleteOutfit} />
+            })
+        } else {
         return this.props.selectedOutfits.map(selectedOutfit => {
-            let top = this.props.tops.find(top => top.id === selectedOutfit.top_id)
-            let bottom = this.props.bottoms.find(bottom => bottom.id === selectedOutfit.bottom_id)
-            return <Outfit key={selectedOutfit.id} outfit={selectedOutfit} top={top} bottom={bottom}/>
+                let top = this.props.tops.find(top => top.id === selectedOutfit.top_id)
+                let bottom = this.props.bottoms.find(bottom => bottom.id === selectedOutfit.bottom_id)
+                return  < Outfit key={selectedOutfit.id} outfit={selectedOutfit} top={top} bottom={bottom} deleteSelectedOutfit={this.props.deleteSelectedOutfit} wardrobeId={this.props.wardrobeId} /> 
+            })
+        }
+    }
+
+    handleAllOutfits = () => {
+        this.setState({
+            showAll: !this.state.showAll
         })
-
-    
     }
 
 
-    handleClick = (e) => {
-        
-    }
+    // {this.state.user ? <div><Wardrobe wardrobes={this.state.wardrobes} outfits={this.state.outfits} tops={this.state.tops} bottoms={this.state.bottoms}/> 
+    //         <Closet tops={this.state.tops} bottoms={this.state.bottoms}  deleteTop={this.deleteTop} deleteBottom={this.deleteBottom}/></div> : <Login login={this.handleLogin}/>} 
+
+    // showAllOutfits = () => {
+    //   return this.props.allOutfits.map(console.log)
+    // }
     
 
 
@@ -49,12 +66,13 @@ class WardrobeOutfits extends Component {
     // }
  
     render() {
-
+        //console.log(this.state.outfits)
         return(
             <div>
     
-                {this.renderOutfits()}
-                
+                {this.renderSelectedOutfit()}
+                <button onClick={this.handleAllOutfits}>View All Outfits</button>
+                {/* <AllOutfits  tops={this.props.tops} bottoms={this.props.bottoms} allOutfits={this.props.allOutfits}/> */}
             </div>
         )
     }

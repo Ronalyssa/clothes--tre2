@@ -38,6 +38,11 @@ class NavBar extends Component {
             </Menu.Menu>
           </Menu>
         )
+
+        // Depending on which button to clicked Home vs. Login
+
+        // Home-this.props.history.push("/HomePage")
+        // Log in -this.props.history.push("/Login")
     }
 }
 

@@ -11,16 +11,16 @@ class Top extends Component {
     }
 
 
-    // handleDelete = () => {
+    handleDelete = () => {
 
-    //     const id = this.props.top.id
-    
-    //     fetch(`http://localhost:3000/tops/${id}`, {method: 'DELETE'})
-    //     .then(resp => resp.json())
-    //     .then(top => 
-    //             this.props.deleteTop(this.props.user.top.id)
-    //         )
-    //     }
+        const id = this.props.top.id
+        console.log(id)
+        fetch(`http://localhost:3000/tops/${id}`, {method: 'DELETE'})
+        .then(resp => resp.json())
+        .then(top => 
+                this.props.deleteTop(id)
+            )
+        }
 
     render() {
 
@@ -28,7 +28,7 @@ class Top extends Component {
             <div>
                 
             {this.props.top.name}<br/> 
-            {this.props.top.image} <br/>
+            <img src={this.props.top.image}/> <br/>
             <button onClick={this.handleDelete}> Delete </button>
             </div>
         )

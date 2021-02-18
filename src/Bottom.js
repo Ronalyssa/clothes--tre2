@@ -17,11 +17,12 @@ class Bottom extends Component {
         fetch(`http://localhost:3000/bottoms/${id}`, {method: 'DELETE'})
         .then(resp => resp.json())
         .then(bottom => 
-                this.props.deleteBottom(this.props.user.bottom.id)
+                this.props.deleteBottom(id)
             )
         }
 
- 
+
+
     render() {
 
         return(

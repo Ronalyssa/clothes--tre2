@@ -13,6 +13,8 @@ import NavBar from './NavBar'
 import HomePage from './HomePage'
 import Wardrobe from './Wardrobe'
 import Closet from './Closet'
+import UploadBottomForm from './UploadBottomForm'
+import UploadTopForm from './UploadTopForm'
 
 
 
@@ -23,28 +25,50 @@ class App extends Component {
     user: null
   }
 
-  // deleteTop = (id) => {
-  //   let updatedTop = this.state.user.tops.filter(top => top.id !== id)
-  //   this.setState({
-  //     //how to access a specific value as a key
-  //   })
-  // }
+  deleteTop = (id) => {
+    let tops = this.state.tops.filter(top => top.id !== id)
+    this.setState({
+      tops
+    })
+  }
 
 
 
-  // deleteBottom = (id) => {
-  //   let updatedBottom = this.state.user.bottoms.filter(bottom => bottom.id !== id)
-  //   this.setState({
-  //     //how to access a specific value as a key
-  //   })
-  // }
+  deleteBottom = (id) => {
+    let bottoms = this.state.bottoms.filter(bottom => bottom.id !== id)
+    this.setState({
+      bottoms
+    })
+  }
 
-  // deleteOutfit = (id) => {
-  //   let updatedOutfit = this.state.user.outfits.filter(bottom => bottom.id !== id)
-  //   this.setState({
-  //     //how to access a specific value as a key
-  //   })
-  // }
+  deleteOutfit = (id) => {
+    let outfits = this.state.outfits.filter(outfit => outfit.id !== id)
+    this.setState({
+      outfits
+    })
+  }
+
+
+  
+  
+  // postBottom = (bottomData) => {
+  //     fetch("http://localhost:3000/bottoms", {
+  //         method: "POST",
+  //         headers: {"Content-Type": "application/json"},
+  //         body: JSON.stringify({
+  //             name: bottomData.name,
+  //             image: bottomData.image,
+              
+  //         })
+  //     })
+  //   .then(resp => resp.json())
+  //   .then(newBottom => {this.setState({  //should the state be the whole bottom? ...doesn't match with the state
+  //           name: bottomData.name,
+  //           image: bottomData.image
+  //           })
+  //       })
+
+
 
 
   handleLogin = (userObj) => {
@@ -57,42 +81,67 @@ class App extends Component {
     })
     .then(resp => resp.json())
     .then(user => {
-      
+      window.localStorage.setItem("userId",user.id);
       this.setState({
-        user
+        user,
+        user_id: user.id,
+        tops: user.tops,
+        bottoms: user.bottoms,
+        outfits: user.outfits,
+        wardrobes: user.wardrobes
       })
     })
   } 
 
-
-
+handleTops = (topData) => {
+  this.setState({
+    tops: {...this.state.tops, topData}
+  })
+}
 
   render() {
     
-
+    
     return (
         <div className="App">
           <NavBar/>
           <header className="App-header">
 
-            {/* <Switch>
-              <Route component={HomePage} path={'/'}/>
-              <Route component={Login} path={'/Login'}/>
-            </Switch> */}
+           {/* <Switch>
+              <Route component={props => <WelcomePage {...props}/>} path={'/welcomePage'}/>
+              <Route component={props => <Login {...props}/>} exact path={'/login'}/>
+              <Route component={props => <HomePage {...props}/>} path={'/homePage'}/>
+              <Route component={props => <UploadTopForm/>} exact path = {'/tops/new'}/> */}
+              {/* <Route component={tops => <Closet {...tops}/>} exact path = {'/closet'}/> */}
+              {/* <Route component={props => <Top {...props}/>} exact path={'/tops'}/>
+              <Route component={props => <Bottom {...props}/>} exact path={'/bottoms'}/>
+              <Route component={props => <CreateOutfitForm {...props}/>} exact path={'/outfits/new'}/>
+              <Route component={props => <Outfit {...props}/>} exact path={'/outfits'}/>
+              */}
+            {/* </Switch> */}
             
-            {this.state.user ? <div><Wardrobe wardrobes={this.state.user.wardrobes} outfits={this.state.user.outfits} tops={this.state.user.tops} bottoms={this.state.user.bottoms}/> 
-            <Closet tops={this.state.user.tops} bottoms={this.state.user.bottoms}  deleteTop={this.deleteTop} deleteBottom={this.deleteBottom}/></div> : <Login login={this.handleLogin}/>} 
+            {this.state.user ? <div><Wardrobe wardrobes={this.state.wardrobes} outfits={this.state.outfits} tops={this.state.tops} bottoms={this.state.bottoms} deleteOutfit={this.deleteOutfit}/> 
+            <Closet tops={this.state.tops} bottoms={this.state.bottoms}  deleteTop={this.deleteTop} deleteBottom={this.deleteBottom}/>  
+            <UploadTopForm tops={this.handleTops}/></div> : <Login login={this.handleLogin}/>} 
             
+
+           
+            {/* <UploadBottomForm postBottom={this.postBottom}/> */}
            
     
           </header>
+
         </div>
     );
   }
 
 }
 
+
+
 export default App;
+
+
 
 // User
 
