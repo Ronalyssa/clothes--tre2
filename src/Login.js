@@ -14,4 +14,4 @@ class Login extends Component {
     }
 }
 
-export default Top;
+export default Login;

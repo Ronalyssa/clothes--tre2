@@ -8,7 +8,12 @@ class HomePage extends Component {
 
         return(
             <div>
-                
+                <h1>
+                CLOTHES-ÊTRE
+                </h1>
+                <h3>
+                About section
+                </h3>
             </div>
         )
     }
