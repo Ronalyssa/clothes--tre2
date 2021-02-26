@@ -2,15 +2,32 @@ import logo from './logo.svg';
 import './App.css';
 import React, { Component } from 'react';
 import Closet from './Closet'
+import ClosetContainer from './ClosetContainer'
 import Login from './Login'
 import NavBar from './NavBar'
 import HomePage from './HomePage'
 import WelcomePage from './WelcomePage'
+import Signup from './Signup'
+import UploadTopForm from './UploadTopForm'
 
 class App extends Component {
 
   state = {
     user: null
+  }
+
+  handleAddTops = (topData) => {
+    this.setState({
+      tops: {...this.state.tops, topData}
+    })
+  }
+
+
+  deleteTop = (id) => {
+    let tops = this.state.tops.filter(top => top.id !== id)
+    this.setState({
+      tops
+    })
   }
 
   // componentDidMount() {
@@ -38,6 +55,27 @@ class App extends Component {
     })
   }  
 
+  handleSignup = (userObj) => {
+    // console.log(userObj)
+    fetch('http://localhost:3000/users', {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({
+        user: {
+          username: userObj.username,
+          password: userObj.password
+        }
+      })
+    })
+    .then(resp => resp.json())
+    .then(user => {this.setState({
+      user
+      })
+    })
+  }  
+
+
+
   render() {
     console.log(this.state)
     return (
@@ -46,10 +84,15 @@ class App extends Component {
           <NavBar/>
           <HomePage/>
           <Login login={this.handleLogin}/>
+          {/* <Signup signup={this.handleSignup}/> */}
+
+          <Closet tops={this.state.tops} bottoms={this.state.bottoms} deleteTop={this.deleteTop} />
+           <UploadTopForm tops={this.state.tops} bottoms={this.state.bottoms} addTops={this.handleAddTops}/>
 
           {/* <Switch>
               <Route component={props => <HomePage {...props}/>} path={'/homePage'}/>
               <Route component={props => <Login {...props}/>} exact path={'/login'}/>
+              <Route component={props => <Signup {...props}/>} exact path={'/Signup'}/>
               <Route component={props => <WelcomePage {...props}/>} path={'/welcomePage'}/>
               <Route component={tops => <Closet {...tops}/>} exact path = {'/closet'}/>
               <Route component={props => <Top {...props}/>} exact path={'/tops'}/>

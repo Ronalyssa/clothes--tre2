@@ -60,8 +60,11 @@ class Login extends Component {
                         </Segment>
                     </Form>
                     <Message>
-                        New to us? <a href='#'>Sign Up</a>
+                        New to us? <a href='#'>Sign Up</a> 
+                        {/* need to redirect to signup page */}
+
                     </Message>
+                
                 </Grid.Column>
         </Grid>
         )
