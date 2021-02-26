@@ -9,7 +9,7 @@ class Closet extends Component {
 
         return(
             <div>
-                
+                I'm your Closet!
             </div>
         )
     }

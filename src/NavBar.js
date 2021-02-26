@@ -5,6 +5,7 @@ class NavBar extends Component {
     
     handleClick = () => {
         console.log("I was clicked!")
+        // this.props.history.push("/Login")
     }
  
     render() {
