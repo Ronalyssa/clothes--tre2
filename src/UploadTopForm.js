@@ -45,14 +45,13 @@ class UploadTopForm extends Component {
               })
           })
           .then(resp => resp.json())
-          .then(tops => this.handleTop(tops)
-            // this.props.handleTops(tops)
-           // this.props.history.push("/closet")
-          )
-          }
+          .then(tops => {this.handleTop(tops)
+            this.props.history.push("/closet")
+          })
+        }
         
         handleTop = (top) => {
-          this.props.tops(top)
+          this.props.addTops(top)
         }
           
         

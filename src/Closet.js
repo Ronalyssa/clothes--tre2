@@ -19,10 +19,21 @@ import Bottom from './Bottom'
 class Closet extends Component {
 
     showTops = () => {
-        console.log(this.props.tops)
-        return this.props.tops.map(top => {
-            return <Top key={top.id}  {...top} deleteTop={this.props.deleteTop}/>
-        })
+        // console.log(this.props.tops)
+        if (this.props.user !== null) {
+            console.log(this.props.tops)
+            return this.props.tops.map(top => {
+                return <Top key={top.id}  {...top} deleteTop={this.props.deleteTop}/>
+            })
+        } else {
+            console.log("Please sign in")
+            // Error message to login or push route to login page.
+        }
+
+    }
+
+    handleUploadTop = () => {
+        this.props.history.push("/tops/new")
     }
     
  
@@ -31,7 +42,7 @@ class Closet extends Component {
         return(
             <div>
                Welcome to your Closet!
-
+               <button onClick={this.handleUploadTop}>Upload Top</button>
                {this.showTops()}
             
                

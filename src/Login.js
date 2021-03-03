@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
+// import { useHistory } from "react-router-dom";
 
 
 class Login extends Component {
@@ -27,15 +28,15 @@ class Login extends Component {
         // post body and username and password 
         //user back or error
         //user- success case
-
+        //  console.log(this.props.login)
         this.props.login(this.state)
-        // this.props.history.push("/welcomePage")
-
+        this.props.history.push("/welcomePage")
+       
     }
     
  
     render() {
-
+        // console.log(this.props)
         return(
             <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
                 <Grid.Column style={{ maxWidth: 450 }}>

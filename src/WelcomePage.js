@@ -5,7 +5,7 @@ class WelcomePage extends Component {
 
     handleClick = () => {
         // have route to redirect to closet
-        // this.props.history.push("/Closet")
+        this.props.history.push("/closet")
     }
     
  
