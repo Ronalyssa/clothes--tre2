@@ -28,13 +28,19 @@ class App extends Component {
     user: null
   }
 
+  selectedTop = (id) => {
+    // let top = this.state.tops.filter(top => {top.id === id})
+  }
+
   editTopName = (id) => {
+
+    
 
   }
 
   handleAddTops = (topData) => {
     this.setState({
-      tops: {...this.state.tops, topData}
+      tops: [...this.state.tops, topData]
     })
   }
 
@@ -103,7 +109,7 @@ class App extends Component {
     return (
       <div className="App">
         <header >
-          <NavBar/>
+         
           {/* <HomePage/>  */}
           {/* <Login login={this.handleLogin}/> */}
           {/* <Signup signup={this.handleSignup}/> */}
@@ -112,6 +118,7 @@ class App extends Component {
            <UploadTopForm tops={this.state.tops} bottoms={this.state.bottoms} addTops={this.handleAddTops}/> */}
 
          <Router history={history}>
+         <NavBar/>
           <Switch>
                 <Route component={props => <HomePage {...props}/>} path={'/homePage'}/>
                 <Route component={props => <Login  {...props} login={this.handleLogin}/>} exact path={'/login'}/>
@@ -120,7 +127,7 @@ class App extends Component {
                 <Route component={props => <Closet tops={this.state.tops} bottoms={this.state.bottoms} user={this.state.user} deleteTop={this.deleteTop} {...props}/>} exact path = {'/closet'}/>
                 <Route component={props => <Top {...props}/>} exact path={'/tops'}/>
                 <Route component={props => <Bottom {...props}/>} exact path={'/bottoms'}/>
-                <Route component={props => <UpdateTopName {...props}/>} exact path = {'/tops/update'}/>
+                <Route component={props => <UpdateTopName tops={this.state.tops} {...props}/>} exact path = {'/tops/update/:id'}/>
                 <Route component={props => <UploadBottomForm {...props}/>} exact path = {'/bottoms/new'}/>
                 <Route component={props => <UploadTopForm tops={this.state.tops} bottoms={this.state.bottoms} addTops={this.handleAddTops} {...props}/>} exact path = {'/tops/new'}/>
               

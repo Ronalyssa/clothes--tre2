@@ -22,7 +22,6 @@ class UploadTopForm extends Component {
           }
         
           handleImage = (e) => {
-            console.log()
             this.setState({
               image: e.target.value
             })

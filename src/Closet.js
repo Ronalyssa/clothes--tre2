@@ -23,7 +23,7 @@ class Closet extends Component {
         if (this.props.user !== null) {
             console.log(this.props.tops)
             return this.props.tops.map(top => {
-                return <Top key={top.id}  {...top} deleteTop={this.props.deleteTop}/>
+                return <Top key={top.id}  {...top} deleteTop={this.props.deleteTop} history={this.props.history}/>
             })
         } else {
             console.log("Please sign in")
