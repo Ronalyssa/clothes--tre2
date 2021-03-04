@@ -28,6 +28,10 @@ class App extends Component {
     user: null
   }
 
+  editTopName = (id) => {
+
+  }
+
   handleAddTops = (topData) => {
     this.setState({
       tops: {...this.state.tops, topData}
@@ -66,6 +70,7 @@ class App extends Component {
       })
       //this.props.history.push("/welcomePage")
       console.log(this.props)
+      localStorage.setItem("userId", user.id)
     })
   }  
 

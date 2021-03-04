@@ -14,8 +14,6 @@ class UploadTopForm extends Component {
         }
       }
           
-      
-      
        
           handleName = (e) => {
             this.setState({
@@ -56,6 +54,7 @@ class UploadTopForm extends Component {
           
         
           render() {
+            //   console.log(tops)
             return (
               <div >
                 <form onSubmit={this.handleSubmit}>
