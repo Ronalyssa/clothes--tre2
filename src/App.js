@@ -61,44 +61,44 @@ class App extends Component {
   //   })
   // }
 
-  handleLogin = (userObj) => {
-    // console.log(userObj)
-    fetch('http://localhost:3000/login', {
-      method: "POST",
-      headers: {"Content-Type": "application/json"},
-      body: JSON.stringify(userObj)
-    })
-    .then(resp => resp.json())
-    .then(user => {this.setState({
-      user,
-      tops: user.tops,
-      bottoms: user.bottoms
-      })
-      //this.props.history.push("/welcomePage")
-      console.log(this.props)
-      localStorage.setItem("userId", user.id)
-    })
-  }  
+  // handleLogin = (userObj) => {
+  //   // console.log(userObj)
+  //   fetch('http://localhost:3000/login', {
+  //     method: "POST",
+  //     headers: {"Content-Type": "application/json"},
+  //     body: JSON.stringify(userObj)
+  //   })
+  //   .then(resp => resp.json())
+  //   .then(user => {this.setState({
+  //     user,
+  //     tops: user.tops,
+  //     bottoms: user.bottoms
+  //     })
+  //     //this.props.history.push("/welcomePage")
+  //     console.log(this.props)
+  //     localStorage.setItem("userId", user.id)
+  //   })
+  // }  
 
-  handleSignup = (userObj) => {
-    // console.log(userObj)
-    fetch('http://localhost:3000/users', {
-      method: "POST",
-      headers: {"Content-Type": "application/json"},
-      body: JSON.stringify({
-        user: {
-          username: userObj.username,
-          password: userObj.password
-        }
-      })
-    })
-    .then(resp => resp.json())
-    .then(user => {this.setState({
-      user
-      })
+  // handleSignup = (userObj) => {
+  //   // console.log(userObj)
+  //   fetch('http://localhost:3000/users', {
+  //     method: "POST",
+  //     headers: {"Content-Type": "application/json"},
+  //     body: JSON.stringify({
+  //       user: {
+  //         username: userObj.username,
+  //         password: userObj.password
+  //       }
+  //     })
+  //   })
+  //   .then(resp => resp.json())
+  //   .then(user => {this.setState({
+  //     user
+  //     })
       
-    })
-  }  
+  //   })
+  // }  
 
 
 
@@ -155,3 +155,18 @@ export default App;
 
 // <Route component={props => <CreateOutfitForm {...props}/>} exact path={'/outfits/new'}/>
 // <Route component={props => <Outfit {...props}/>} exact path={'/outfits'}/>
+
+
+
+// fetch('http://localhost:3000/login', {
+
+
+  // .then(user => {this.setState({
+  //   user,
+  //   tops: user.tops,
+  //   bottoms: user.bottoms
+  //   })
+  //   //this.props.history.push("/welcomePage")
+  //   // console.log(this.props)
+  //   localStorage.setItem("userId", user.id)
+  // })

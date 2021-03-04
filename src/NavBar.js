@@ -11,6 +11,10 @@ class NavBar extends Component {
  
     render() {
 
+        // handleClick = () => {
+        //     this.props.logoutUser()
+        // }
+
         return(
             <div>
                 {/* <button> Home Page</button>
@@ -19,8 +23,15 @@ class NavBar extends Component {
                 <Link to='/homePage'> 
                 Home page
                 </Link>
+
+                {/* {this.props.currentUser ? <Link to='/login' onClick={this.handleClick}>Logout</Link> :
                 <Link to='/login'> 
                 Login
+                </Link>
+                } */}
+
+                <Link to='/login'> 
+                    Login
                 </Link>
             </div>
         )

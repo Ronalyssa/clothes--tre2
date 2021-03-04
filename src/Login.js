@@ -7,7 +7,8 @@ class Login extends Component {
 
     state = {
         username: "ronalyssa",
-        password: "hello"
+        password: "hello",
+        error: ''
     }
 
     handleUser = (e) => {
@@ -29,8 +30,23 @@ class Login extends Component {
         //user back or error
         //user- success case
         //  console.log(this.props.login)
-        this.props.login(this.state)
-        this.props.history.push("/welcomePage")
+
+        fetch('http://localhost:3000/api/v1/auth', {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(this.state)
+          })
+          .then(resp => resp.json())
+          .then(data => {
+            if (data.error){
+              this.setState({
+                  error: data.error
+              })
+            } else {
+                // what to do if successful?????
+            }
+          })
+        
        
     }
     
@@ -43,6 +59,7 @@ class Login extends Component {
                     <Header as='h2' color='teal' textAlign='center'>
                         Log-in to your account
                     </Header>
+                    {this.state.error ? <h4 style={{color: 'red'}}>{this.state.error}</h4> : null}
                     <Form size='large' onSubmit={this.handleSubmit}>
                         <Segment stacked>
                             <Form.Input fluid icon='username' iconPosition='left' placeholder='UserName'  onChange={this.handleUser}/>
@@ -73,3 +90,7 @@ class Login extends Component {
 }
 
 export default Login;
+
+
+// this.props.login(this.state)
+// this.props.history.push("/welcomePage")
