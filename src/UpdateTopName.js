@@ -4,7 +4,12 @@ import React, { Component } from 'react';
 class UpdateTopName extends Component {
 
     state = {
+        id: parseInt(this.props.match.params.id),
+        // image: '',
         name:''
+        // user_id: null
+        
+        
     }
     
     editTopName = (e) => {
@@ -22,7 +27,9 @@ class UpdateTopName extends Component {
             method: "PATCH",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify({
-              name: this.state.name
+                id: this.state.id,
+                name: this.state.name
+            
         
             })
         })
@@ -41,12 +48,25 @@ class UpdateTopName extends Component {
           })
     }
 
+    // handleImage = () => {
+    //     let paramsId = this.props.match.params.id
+    //     let id = parseInt(paramsId)
+    //     console.log(this.props.tops)
+    //     let selectedTop = this.props.tops.filter(top => top.id === id)
+    //     console.log(selectedTop.image)
+    //     // this.props.tops.find(top => {})
+    //     this.setState({
+    //         image: selectedTop.image,
+    //         user_id: selectedTop.user_id
+    //     })
+    // }
+
 
 
 
     render() {
-    //    console.log(this.props)
-
+       console.log(this.props.tops)
+        console.log(this.state)
        // console.log(this.props.match.params.id)
     //    let paramsId = this.props.match.params.id
     //    let id = parseInt(paramsId)
@@ -57,6 +77,8 @@ class UpdateTopName extends Component {
                   <h3>Edit a Top</h3>
                   <input type="text" name="name" onChange={this.handleNameChange} />
                   <br/>
+                  {/* <input type="text" name="image"  value={this.state.image} onChange={this.handleImage}/>
+                  <br/> */}
                   <input type="submit" name="submit"  />
                 </form>
             </div>
