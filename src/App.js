@@ -56,18 +56,18 @@ class App extends Component {
   }
 
   handleLogin = (userObj) => {
-    fetch('http://localhost:3000/login', {
+    fetch('http://localhost:3000/api/v1/auth', {
       method: "POST",
       headers: {"Content-Type": "application/json"},
       body: JSON.stringify(userObj)
     })
     .then(resp => resp.json())
-    .then(user => {this.setState({
-      user,
-      tops: user.tops,
-      bottoms: user.bottoms
+    .then(authData => {this.setState({
+      user: authData.user
       })
-      localStorage.setItem("userId", user.id)
+    
+      localStorage.setItem("token", authData.token)
+      console.log(localStorage.token)
     })
   }  
 
@@ -85,15 +85,14 @@ class App extends Component {
     .then(resp => resp.json())
     .then(user => {this.setState({
       user
-      })
-      
+      })  
     })
   }  
 
 
 
   render() {
-    console.log(this.state.tops)
+    console.log(this.state)
 
     return (
       <div className="App">
@@ -138,3 +137,7 @@ class App extends Component {
 }
 
 export default App;
+
+
+  //this.props.history.push("/welcomePage")
+      // console.log(this.props)
