@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
-import { Button, Card } from 'semantic-ui-react'
+import { CarouselProvider, Slider } from "pure-react-carousel";
+import CustomCardSlide from "./CustomCardSlide";
+import CustomDotGroup from "./CustomDotGroup";
+
+
 
 
 class Top extends Component {
@@ -24,12 +28,26 @@ class Top extends Component {
     render() {
       
         return(
-
-        <div>
-            {this.props.name}<button onClick={this.handleChangeName}>Edit Name</button>
-            <img src={this.props.image} />
+            <CarouselProvider
+            naturalSlideWidth={1}
+            naturalSlideHeight={1.25}
+            totalSlides={3}
+            style={{ width: "300px" }}
+          >
+            <Slider>
+              <CustomCardSlide
+                image={this.props.image}
+                index={0}
+                header={this.props.name}
+            
+              />
+            <button onClick={this.handleChangeName}>Edit Name</button>
             <button onClick={this.handleDelete}>Delete</button>
-        </div>
+            </Slider>
+        
+            <CustomDotGroup slides={3} />
+          </CarouselProvider>
+     
         )
     }
 }
@@ -59,3 +77,27 @@ export default Top;
         //                 </div>
         //         </Card.Content>
         //   </Card>
+
+        // import { Button, Card } from 'semantic-ui-react'
+
+
+
+    //     <div>
+    //     {this.props.name}<button onClick={this.handleChangeName}>Edit Name</button>
+    //     <img src={this.props.image} />
+    //     <button onClick={this.handleDelete}>Delete</button>
+    // </div>
+
+
+//     <CustomCardSlide
+//     header="Elliot Baker"
+//     image="https://place-hold.it/800x800&text=Elliot&fontsize=32"
+//     index={1}
+//     meta="Friend"
+//   />
+//   <CustomCardSlide
+//     header="Steve Sanders"
+//     image="https://place-hold.it/800x800&text=Steve&fontsize=32"
+//     index={2}
+//     meta="Friend"
+//   />
