@@ -28,14 +28,20 @@ class App extends Component {
     user: null
   }
 
-  selectedTop = (id) => {
-    // let top = this.state.tops.filter(top => {top.id === id})
-  }
+
 
   editTopName = (id) => {
 
-    
+  //  let top = this.state.tops.filter(top => top.id === id)
+  //  console.log(top)
+    this.state.tops.map(top => {
+      if (top.id === id){
+        console.log(this.state.tops.indexOf(top))
+        this.setState({
 
+        })
+      }
+    })
   }
 
   handleAddTops = (topData) => {
@@ -103,7 +109,7 @@ class App extends Component {
 
 
   render() {
-    // console.log(this.state)
+    console.log(this.state.tops)
 
     // console.log(this.props)
     return (
@@ -127,9 +133,9 @@ class App extends Component {
                 <Route component={props => <Closet tops={this.state.tops} bottoms={this.state.bottoms} user={this.state.user} deleteTop={this.deleteTop} {...props}/>} exact path = {'/closet'}/>
                 <Route component={props => <Top {...props}/>} exact path={'/tops'}/>
                 <Route component={props => <Bottom {...props}/>} exact path={'/bottoms'}/>
-                <Route component={props => <UpdateTopName tops={this.state.tops} {...props}/>} exact path = {'/tops/update/:id'}/>
+                <Route component={props => <UpdateTopName tops={this.state.tops} editTopName={this.editTopName} {...props}/>} exact path = {'/tops/update/:id'}/>
                 <Route component={props => <UploadBottomForm {...props}/>} exact path = {'/bottoms/new'}/>
-                <Route component={props => <UploadTopForm tops={this.state.tops} bottoms={this.state.bottoms} addTops={this.handleAddTops} {...props}/>} exact path = {'/tops/new'}/>
+                <Route component={props => <UploadTopForm tops={this.state.tops} bottoms={this.state.bottoms} addTops={this.handleAddTops}  {...props}/>} exact path = {'/tops/new'}/>
               
             </Switch>
          </Router>

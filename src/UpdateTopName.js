@@ -34,10 +34,10 @@ class UpdateTopName extends Component {
             })
         })
         .then(resp => resp.json())
-        .then(topData => console.log(topData))
-        // .then(top => {this.handleTop(tops)
-        //   this.props.history.push("/closet")
-        // })
+        .then(topData => {
+            this.props.editTopName(topData)
+            this.props.history.push("/closet" )
+        })
 
     }
 
@@ -87,3 +87,5 @@ class UpdateTopName extends Component {
 }
 
 export default UpdateTopName;
+
+// .then(top => {this.handleTop(tops)
