@@ -14,7 +14,7 @@ import UploadTopForm from './UploadTopForm'
 import UploadBottomForm from './UploadTopForm'
 import UpdateTopName from './UpdateTopName'
 import {
-  BrowserRouter as Router,
+  Router,
   Switch,
   Route,
   Link
@@ -22,10 +22,11 @@ import {
 import history from './history'
 
 
+
 class App extends Component {
 
   state = {
-    user: null
+    currentUser: null
   }
 
 
@@ -55,21 +56,24 @@ class App extends Component {
     })
   }
 
-  handleLogin = (userObj) => {
-    fetch('http://localhost:3000/api/v1/auth', {
-      method: "POST",
-      headers: {"Content-Type": "application/json"},
-      body: JSON.stringify(userObj)
-    })
-    .then(resp => resp.json())
-    .then(authData => {this.setState({
-      user: authData.user
-      })
+
+
+
+  // handleLogin = (userObj) => {
+  //   fetch('http://localhost:3000/api/v1/auth', {
+  //     method: "POST",
+  //     headers: {"Content-Type": "application/json"},
+  //     body: JSON.stringify(userObj)
+  //   })
+  //   .then(resp => resp.json())
+  //   .then(authData => {this.setState({
+  //     user: authData.user
+  //     })
     
-      localStorage.setItem("token", authData.token)
-      console.log(localStorage.token)
-    })
-  }  
+  //     localStorage.setItem("token", authData.token)
+  //     console.log(localStorage.token)
+  //   })
+  // }  
 
   handleSignup = (userObj) => {
     fetch('http://localhost:3000/users', {
@@ -89,6 +93,27 @@ class App extends Component {
     })
   }  
 
+
+  componentDidMount() {
+    const token = localStorage.getItem('token')
+    console.log(token)
+      if (token) {
+        // console.log(this.history)
+        this.props.history.push('/login')
+      } else {
+        fetch('http://localhost:3000/api/v1/current_user', {
+          method: 'GET',
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        })
+          .then(resp => resp.json())
+          .then(userData => {this.setState({
+            currentUser: userData.user
+          })
+        })
+      }
+  }
 
 
   render() {
@@ -141,3 +166,9 @@ export default App;
 
   //this.props.history.push("/welcomePage")
       // console.log(this.props)
+
+
+  //     user => {this.setState({
+  //       user
+  //   })
+  // }

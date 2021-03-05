@@ -17,6 +17,7 @@ import Bottom from './Bottom'
 
 
 class Closet extends Component {
+  
 
     showTops = () => {
         // console.log(this.props.tops)

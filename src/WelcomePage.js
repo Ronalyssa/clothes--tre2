@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 
 class WelcomePage extends Component {
 
+ 
+
     handleClick = () => {
         // have route to redirect to closet
         this.props.history.push("/closet")

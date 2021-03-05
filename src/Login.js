@@ -24,8 +24,26 @@ class Login extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault()
-        this.props.login(this.state)
-        this.props.history.push("/welcomePage")
+        // this.props.login(this.state)
+        // this.props.history.push("/welcomePage")
+
+        fetch('http://localhost:3000/api/v1/auth', {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({
+          username: this.state.username,
+          password: this.state.password
+      })
+    })
+    .then(resp => resp.json())
+    .then(authData => {this.setState({
+      user: authData.user
+      })
+    
+      localStorage.setItem("token", authData.token)
+    //   console.log(localStorage.token)
+      this.props.history.push("/welcomePage")
+    })
        
     }
     
