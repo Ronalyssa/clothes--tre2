@@ -25,7 +25,7 @@ import history from './history'
 class App extends Component {
 
   state = {
-    user: null
+    currentUser: null
   }
 
 
@@ -55,21 +55,24 @@ class App extends Component {
     })
   }
 
-  handleLogin = (userObj) => {
-    fetch('http://localhost:3000/login', {
-      method: "POST",
-      headers: {"Content-Type": "application/json"},
-      body: JSON.stringify(userObj)
-    })
-    .then(resp => resp.json())
-    .then(user => {this.setState({
-      user,
-      tops: user.tops,
-      bottoms: user.bottoms
-      })
-      localStorage.setItem("userId", user.id)
-    })
-  }  
+
+
+
+  // handleLogin = (userObj) => {
+  //   fetch('http://localhost:3000/api/v1/auth', {
+  //     method: "POST",
+  //     headers: {"Content-Type": "application/json"},
+  //     body: JSON.stringify(userObj)
+  //   })
+  //   .then(resp => resp.json())
+  //   .then(authData => {this.setState({
+  //     user: authData.user
+  //     })
+    
+  //     localStorage.setItem("token", authData.token)
+  //     console.log(localStorage.token)
+  //   })
+  // }  
 
   handleSignup = (userObj) => {
     fetch('http://localhost:3000/users', {
@@ -85,15 +88,38 @@ class App extends Component {
     .then(resp => resp.json())
     .then(user => {this.setState({
       user
-      })
-      
+      })  
     })
   }  
 
 
+  componentDidMount() {
+    const token = localStorage.getItem('token')
+    console.log(token)
+    console.log("hello")
+      if (!token) {
+        // console.log(this.history)
+        this.props.history.push('/login')
+      } else {
+        fetch('http://localhost:3000/api/v1/current_user', {
+          method: 'GET',
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        })
+          .then(resp => resp.json())
+          .then(userData => {this.setState({
+            currentUser: userData.user,
+            tops: userData.user.tops,
+            bottoms: userData.user.bottoms
+          })
+        })
+      }
+  }
+
 
   render() {
-    console.log(this.state.tops)
+    console.log(this.state)
 
     return (
       <div className="App">
@@ -113,7 +139,7 @@ class App extends Component {
                 <Route component={props => <Login  {...props} login={this.handleLogin}/>} exact path={'/login'}/>
                 <Route component={props => <Signup {...props}/>} exact path={'/signup'}/>
                 <Route component={props => <WelcomePage {...props}/>} path={'/welcomePage'}/>
-                <Route component={props => <Closet tops={this.state.tops} bottoms={this.state.bottoms} user={this.state.user} deleteTop={this.deleteTop} {...props}/>} exact path = {'/closet'}/>
+                <Route component={props => <Closet tops={this.state.tops} bottoms={this.state.bottoms} user={this.state.currentUser} deleteTop={this.deleteTop} {...props}/>} exact path = {'/closet'}/>
                 <Route component={props => <Top {...props}/>} exact path={'/tops'}/>
                 <Route component={props => <Bottom {...props}/>} exact path={'/bottoms'}/>
                 <Route component={props => <UpdateTopName tops={this.state.tops} editTopName={this.editTopName} {...props}/>} exact path = {'/tops/update/:id'}/>
@@ -136,5 +162,6 @@ class App extends Component {
   }
  
 }
+
 
 export default App;
