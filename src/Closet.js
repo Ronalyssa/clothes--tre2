@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import ClosetContainer from './ClosetContainer'
 import Top from './Top'
 import Bottom from './Bottom'
+import {
+    Message,
+  } from 'semantic-ui-react'
 
 // import ReactDOM from "react-dom";
 // import { Container, Header, Message, Segment } from "semantic-ui-react";
@@ -28,6 +30,7 @@ class Closet extends Component {
         } else {
             console.log("Please sign in")
             // Error message to login or push route to login page.
+        return  <Message positive>Well done! You successfully read this important alert message.</Message>
         }
 
     }

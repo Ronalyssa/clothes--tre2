@@ -1,10 +1,8 @@
-import logo from './logo.svg';
 import './App.css';
 import React, { Component } from 'react';
 import Closet from './Closet'
 import Top from './Top'
 import Bottom from './Bottom'
-import ClosetContainer from './ClosetContainer'
 import Login from './Login'
 import NavBar from './NavBar'
 import HomePage from './HomePage'

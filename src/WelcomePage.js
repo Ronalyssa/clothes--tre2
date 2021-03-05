@@ -12,7 +12,7 @@ class WelcomePage extends Component {
     render() {
         console.log(this.props.currentUser)
         return(
-            <div>
+            <div >
                  Welcome 
                  {/* {this.props.user} */}
                  <br/>

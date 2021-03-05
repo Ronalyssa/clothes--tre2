@@ -31,7 +31,7 @@ class Top extends Component {
             <CarouselProvider
             naturalSlideWidth={1}
             naturalSlideHeight={1.25}
-            totalSlides={3}
+            totalSlides={2/4}
             style={{ width: "300px" }}
           >
             <Slider>
@@ -48,6 +48,7 @@ class Top extends Component {
             <CustomDotGroup slides={3} />
           </CarouselProvider>
      
+  
         )
     }
 }
