@@ -12,7 +12,7 @@ class HomePage extends Component {
                 CLOTHES-ÊTRE
                 </h1>
                 <h3>
-                About section
+                Clothes-être brings online shopping to your closet!
                 </h3>
             </div>
         )

@@ -1,21 +1,47 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
+import { Button, Dropdown, Menu } from 'semantic-ui-react'
 
 
 class NavBar extends Component {
     
-  
+    
+    state = { activeItem: 'home' }
+
+    handleItemClick = (e, { name }) => this.setState({ activeItem: name })
+
+ 
     render() {
+        const { activeItem } = this.state
 
         return(
-            <div>
-                <Link to='/homePage'> 
-                Home page
+            <Menu size='small'>
+                <Link  to='HomePage'>
+                    <Menu.Item
+                        name='home'
+                        active={activeItem === 'home'}
+                        onClick={this.handleItemClick}
+                    />
                 </Link>
-                <Link to='/login'> 
-                Login
+
+                <Link  to='closet'>
+                    <Menu.Item
+                        name='closet'
+                        active={activeItem === 'closet'}
+                        onClick={this.handleItemClick}
+                    />
                 </Link>
-            </div>
+        
+    
+            <Menu.Menu position='right'>
+    
+              <Menu.Item>
+                <Link to='/Login'>
+                <Button primary>Log In</Button>
+                </Link>
+              </Menu.Item>
+            </Menu.Menu>
+          </Menu>
         )
     }
 }
