@@ -16,32 +16,17 @@ class Top extends Component {
         }
 
     handleChangeName = () => {
-        // either redirect to update page or to 
-        // patch fetch
-        //console.log(this.props)
-        //console.log(this.props.id)
         let id = this.props.id
-        // console.log(id)
-       // console.log(this.props.name)
-        let name = this.props.name
-        // fetch(`http://localhost:3000/tops/${id}`, {
-        //     method: "PATCH",
-        //     headers: {"Content-Type": "application/json"},
-        //     body: JSON.stringify(name)
-        //   }) 
         this.props.history.push(`/tops/update/${id}`)
     }
     
  
     render() {
-        console.log(this.props)
-        return(
       
+        return(
 
         <div>
             {this.props.name}<button onClick={this.handleChangeName}>Edit Name</button>
-            {/* {this.props.image} */}
-
             <img src={this.props.image} />
             <button onClick={this.handleDelete}>Delete</button>
         </div>

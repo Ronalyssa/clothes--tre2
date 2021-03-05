@@ -30,18 +30,15 @@ class App extends Component {
 
 
 
-  editTopName = (id) => {
-
-  //  let top = this.state.tops.filter(top => top.id === id)
-  //  console.log(top)
-    this.state.tops.map(top => {
-      if (top.id === id){
-        console.log(this.state.tops.indexOf(top))
-        this.setState({
-
-        })
+  editTopName = (updatedTop) => {
+    let tops = this.state.tops.map(top => {
+      if(top.id === updatedTop.id){
+         return updatedTop
+      } else {
+         return top
       }
     })
+   this.setState({tops})
   }
 
   handleAddTops = (topData) => {
@@ -58,17 +55,7 @@ class App extends Component {
     })
   }
 
-  // componentDidMount() {
-  //   fetch('http://localhost:3000/users')
-  //   .then(resp => resp.json())
-  //   .then(user => {this.setState({
-  //         user
-  //     })
-  //   })
-  // }
-
   handleLogin = (userObj) => {
-    // console.log(userObj)
     fetch('http://localhost:3000/login', {
       method: "POST",
       headers: {"Content-Type": "application/json"},
@@ -80,14 +67,11 @@ class App extends Component {
       tops: user.tops,
       bottoms: user.bottoms
       })
-      //this.props.history.push("/welcomePage")
-      console.log(this.props)
       localStorage.setItem("userId", user.id)
     })
   }  
 
   handleSignup = (userObj) => {
-    // console.log(userObj)
     fetch('http://localhost:3000/users', {
       method: "POST",
       headers: {"Content-Type": "application/json"},
@@ -111,7 +95,6 @@ class App extends Component {
   render() {
     console.log(this.state.tops)
 
-    // console.log(this.props)
     return (
       <div className="App">
         <header >
@@ -155,9 +138,3 @@ class App extends Component {
 }
 
 export default App;
-
-
-
-
-// <Route component={props => <CreateOutfitForm {...props}/>} exact path={'/outfits/new'}/>
-// <Route component={props => <Outfit {...props}/>} exact path={'/outfits'}/>

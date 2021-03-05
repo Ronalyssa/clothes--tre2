@@ -23,11 +23,6 @@ class Signup extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault()
-        //fetch that specific user based on what is entered in the form 
-        // post body and username and password 
-        //user back or error
-        //user- success case
-
         this.props.signup(this.state)
         // this.props.history.push("/login")
 

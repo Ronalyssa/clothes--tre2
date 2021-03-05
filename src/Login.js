@@ -24,11 +24,6 @@ class Login extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault()
-        //fetch that specific user based on what is entered in the form 
-        // post body and username and password 
-        //user back or error
-        //user- success case
-        //  console.log(this.props.login)
         this.props.login(this.state)
         this.props.history.push("/welcomePage")
        
@@ -36,7 +31,7 @@ class Login extends Component {
     
  
     render() {
-        // console.log(this.props)
+        
         return(
             <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
                 <Grid.Column style={{ maxWidth: 450 }}>

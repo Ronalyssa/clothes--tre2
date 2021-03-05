@@ -5,19 +5,11 @@ class UpdateTopName extends Component {
 
     state = {
         id: parseInt(this.props.match.params.id),
-        // image: '',
-        name:''
-        // user_id: null
-        
-        
+        name:''    
     }
     
     editTopName = (e) => {
         e.preventDefault()
-
-        //NEED TO PASS DOWN TO HERE THE ITEM THAT WAS CLICKED TO HAVE ACCESS TO ID AND NAME
-
-        // let top = this.props.tops.filter(top => {top.name === this.state.name})
         let paramsId = this.props.match.params.id
         let id = parseInt(paramsId)
         console.log(id)
@@ -42,43 +34,19 @@ class UpdateTopName extends Component {
     }
 
     handleNameChange = (e) => {
-        //console.log(e.target.value)
         this.setState({
             name: e.target.value
           })
     }
 
-    // handleImage = () => {
-    //     let paramsId = this.props.match.params.id
-    //     let id = parseInt(paramsId)
-    //     console.log(this.props.tops)
-    //     let selectedTop = this.props.tops.filter(top => top.id === id)
-    //     console.log(selectedTop.image)
-    //     // this.props.tops.find(top => {})
-    //     this.setState({
-    //         image: selectedTop.image,
-    //         user_id: selectedTop.user_id
-    //     })
-    // }
-
-
-
-
     render() {
-       console.log(this.props.tops)
-        console.log(this.state)
-       // console.log(this.props.match.params.id)
-    //    let paramsId = this.props.match.params.id
-    //    let id = parseInt(paramsId)
-    //    console.log(id)
+      
         return(
             <div>
                  <form onSubmit={this.editTopName}>
                   <h3>Edit a Top</h3>
                   <input type="text" name="name" onChange={this.handleNameChange} />
                   <br/>
-                  {/* <input type="text" name="image"  value={this.state.image} onChange={this.handleImage}/>
-                  <br/> */}
                   <input type="submit" name="submit"  />
                 </form>
             </div>
@@ -87,5 +55,3 @@ class UpdateTopName extends Component {
 }
 
 export default UpdateTopName;
-
-// .then(top => {this.handleTop(tops)
