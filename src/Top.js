@@ -11,7 +11,7 @@ class Top extends Component {
     handleDelete = () => {
 
         const id = this.props.id
-        console.log(id)
+     
         fetch(`http://localhost:3000/tops/${id}`, {method: 'DELETE'})
         .then(resp => resp.json())
         .then(top => 

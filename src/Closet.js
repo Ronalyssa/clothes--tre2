@@ -10,7 +10,8 @@ class Closet extends Component {
 
     showTops = () => {
         if (this.props.user !== null) {
-            console.log(this.props.tops)
+            // console.log(this.props.tops)
+            // this.props.history.push("/login")
             return this.props.tops.map(top => {
                 return <Top key={top.id}  {...top} deleteTop={this.props.deleteTop} history={this.props.history}/>
             })

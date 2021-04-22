@@ -53,7 +53,7 @@ class UploadTopForm extends Component {
           
         
           render() {
-              console.log(this.props.currentUser.id)
+            
             return (
               <div >
                 <form onSubmit={this.handleSubmit}>

@@ -12,7 +12,7 @@ class UpdateTopName extends Component {
         e.preventDefault()
         let paramsId = this.props.match.params.id
         let id = parseInt(paramsId)
-        console.log(id)
+      
 
         fetch(`http://localhost:3000/tops/${id}`, { 
 

@@ -75,8 +75,7 @@ class App extends Component {
 
   componentDidMount() {
     const token = localStorage.getItem('token')
-    console.log(token)
-    console.log("hello")
+
       if (!token) {
         // console.log(this.history)
         this.props.history.push('/login')
@@ -87,14 +86,19 @@ class App extends Component {
             Authorization: `Bearer ${token}`
           }
         })
+  
           .then(resp => resp.json())
-          .then(userData => {this.setState({
-            currentUser: userData.user,
-            tops: userData.user.tops,
-            bottoms: userData.user.bottoms
-          })
-        })
-      }
+          .then(
+            userData => {
+              this.setState({
+               currentUser: userData.user,
+               tops: userData.user.tops,
+               bottoms: userData.user.bottoms
+               })
+             
+          }
+          )
+        }
   }
 
 
