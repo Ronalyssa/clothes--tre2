@@ -54,24 +54,6 @@ class App extends Component {
   }
 
 
-
-
-  // handleLogin = (userObj) => {
-  //   fetch('http://localhost:3000/api/v1/auth', {
-  //     method: "POST",
-  //     headers: {"Content-Type": "application/json"},
-  //     body: JSON.stringify(userObj)
-  //   })
-  //   .then(resp => resp.json())
-  //   .then(authData => {this.setState({
-  //     user: authData.user
-  //     })
-    
-  //     localStorage.setItem("token", authData.token)
-  //     console.log(localStorage.token)
-  //   })
-  // }  
-
   handleSignup = (userObj) => {
     fetch('http://localhost:3000/users', {
       method: "POST",
@@ -117,18 +99,10 @@ class App extends Component {
 
 
   render() {
-    console.log(this.state.currentUser)
-
+  
     return (
       <div className="App">
         <header >
-         
-          {/* <HomePage/>  */}
-          {/* <Login login={this.handleLogin}/> */}
-          {/* <Signup signup={this.handleSignup}/> */}
-
-          {/* <Closet tops={this.state.tops} bottoms={this.state.bottoms} user={this.state.user} deleteTop={this.deleteTop} />
-           <UploadTopForm tops={this.state.tops} bottoms={this.state.bottoms} addTops={this.handleAddTops}/> */}
 
          <Router history={history}>
          <NavBar/>
@@ -146,14 +120,7 @@ class App extends Component {
               
             </Switch>
          </Router>
-          
-          {/* {this.state.user ? <div><Wardrobe wardrobes={this.state.wardrobes} outfits={this.state.outfits} tops={this.state.tops} bottoms={this.state.bottoms} deleteOutfit={this.deleteOutfit}/> 
-            <Closet tops={this.state.tops} bottoms={this.state.bottoms}  deleteTop={this.deleteTop} deleteBottom={this.deleteBottom}/>  
-            <UploadTopForm tops={this.handleTops}/></div> : <Login user={this.state.user/>} login={this.handleLogin} */}
-
-            {/* {this.state.user ? <div> <Closet tops={this.state.user.tops} bottoms={this.state.user.bottoms}/> </div> : <Login user={this.state.user} login={this.handleLogin()}/> } */}
-
-          
+        
         </header>
       </div>
     );

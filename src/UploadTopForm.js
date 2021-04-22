@@ -31,7 +31,7 @@ class UploadTopForm extends Component {
           handleSubmit = (e) => {
             e.preventDefault()
            
-          //let newTop = {...this.state}
+          
           fetch("http://localhost:3000/tops", { 
               method: "POST",
               headers: {"Content-Type": "application/json"},

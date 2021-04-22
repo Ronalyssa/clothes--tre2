@@ -5,32 +5,18 @@ import {
     Message,
   } from 'semantic-ui-react'
 
-// import ReactDOM from "react-dom";
-// import { Container, Header, Message, Segment } from "semantic-ui-react";
-
-// // Heads up!
-// // Don't forget to setup required CSS!
-// import "pure-react-carousel/dist/react-carousel.es.css";
-
-// import CardCarousel from "./examples/CardCarousel";
-// import ImageCarousel from "./examples/ImageCarousel";
-
-
-
 
 class Closet extends Component {
 
     showTops = () => {
-        // console.log(this.props.tops)
         if (this.props.user !== null) {
             console.log(this.props.tops)
             return this.props.tops.map(top => {
                 return <Top key={top.id}  {...top} deleteTop={this.props.deleteTop} history={this.props.history}/>
             })
         } else {
-            console.log("Please sign in")
             // Error message to login or push route to login page.
-        return  <Message positive>Well done! You successfully read this important alert message.</Message>
+        return  <Message positive>Well done! You successfully logged in!.</Message>
         }
 
     }
