@@ -10,7 +10,7 @@ class UploadTopForm extends Component {
         this.state = {
           name: '',
           image: '',
-          user_id: parseInt(window.localStorage.getItem("userId"))
+          user_id: this.props.currentUser.id
         }
       }
           
@@ -53,7 +53,7 @@ class UploadTopForm extends Component {
           
         
           render() {
-            //   console.log(tops)
+              console.log(this.props.currentUser.id)
             return (
               <div >
                 <form onSubmit={this.handleSubmit}>

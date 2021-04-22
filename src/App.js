@@ -117,7 +117,7 @@ class App extends Component {
 
 
   render() {
-    console.log(this.state)
+    console.log(this.state.currentUser)
 
     return (
       <div className="App">
@@ -142,7 +142,7 @@ class App extends Component {
                 <Route component={props => <Bottom {...props}/>} exact path={'/bottoms'}/>
                 <Route component={props => <UpdateTopName tops={this.state.tops} editTopName={this.editTopName} {...props}/>} exact path = {'/tops/update/:id'}/>
                 <Route component={props => <UploadBottomForm {...props}/>} exact path = {'/bottoms/new'}/>
-                <Route component={props => <UploadTopForm tops={this.state.tops} bottoms={this.state.bottoms} addTops={this.handleAddTops}  {...props}/>} exact path = {'/tops/new'}/>
+                <Route component={props => <UploadTopForm tops={this.state.tops} bottoms={this.state.bottoms} addTops={this.handleAddTops} currentUser={this.state.currentUser} {...props}/>} exact path = {'/tops/new'}/>
               
             </Switch>
          </Router>
